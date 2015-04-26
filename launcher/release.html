@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>请修改标题</title>
+    <script src="launcher/jquery-2.1.1.min.js"></script>
+    <script src="launcher/share.js"></script>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no,target-densitydpi=device-dpi"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="full-screen" content="true"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <style> 
+        body{
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            text-align: center;
+            background: #000000;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+        html {
+            -ms-touch-action: none; /* Direct all pointer events to JavaScript code. */
+            overflow: hidden;
+        }
+        div,canvas {
+            display:block;
+            position:absolute;
+            margin: 0 auto;
+            padding: 0;
+            border: 0;
+        }
+        #loading{
+            display:block;
+            margin: 0 auto;
+            padding: 0;
+            border: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div id='loading'></div>
+<div style="position:relative;" id="gameDiv"></div>
+<script src="launcher/sonic.js"></script>
+<script>
+    var dw = document.documentElement.clientWidth
+    var dh = document.documentElement.clientHeght
+    var ee = 0
+    if(dw > dh){
+        ee = dh
+    }else{
+        ee = dw
+    }
+    var halfee = ee/2
+    var circle = new Sonic({
+
+    width: ee/4,
+    height: ee/4,
+    padding: ee/2-ee/16,
+
+    strokeColor: '#ffffff',
+
+    pointDistance: .01,
+    stepsPerFrame: 3,
+    trailLength: .7,
+
+    step: 'fader',
+
+    setup: function() {
+        this._.lineWidth = 5;
+    },
+
+    path: [
+        ['arc', halfee/8, halfee/8, halfee/8, 0, 360]
+    ]
+
+});
+
+circle.play();
+// circle.canvas.width = 500;
+// circle.canvas.height = 500;
+$('#loading').append(circle.canvas)
+</script>
+<script>var document_class = "Main";</script><!--这部分内容在编译时会被替换，要修改文档类，请到工程目录下的egretProperties.json内编辑。-->
+<!-- <script src="launcher/egret_require.js"></script>
+<script src="launcher/egret_loader.js"></script>
+<script src="launcher/game-min.js"></script> -->
+<script>
+    //
+
+    //加载游戏代码
+    $(document).ready(function() {
+    $('.ball, .ball1').removeClass('stop');     
+        $('.trigger').click(function() {
+                $('.ball, .ball1').toggleClass('stop');
+        });
+    });
+
+    var loadarr =["launcher/egret_require.js","launcher/egret_loader.js","launcher/game-min.js"]
+    function startShow(){
+        $('#loading').remove();
+        $('#gameDiv').show();
+
+        // egret_h5.preloadScript(egret_file_list, "libs/");
+        // egret_h5.preloadScript(game_file_list, "bin-debug/src/");
+        // egret_h5.startLoading();
+        egret_h5.startGame();
+    }
+    // startShow();
+    $('#gameDiv').hide()
+    function loadjs(){
+        if( loadarr.length > 0 ){
+            var url = loadarr.shift()
+            if(loadarr.length == 0){
+                $.getScript(url,startShow)
+            }else{
+                $.getScript(url,loadjs)
+            }
+        }
+    }
+    loadjs();
+</script>
+</body>
+</html>

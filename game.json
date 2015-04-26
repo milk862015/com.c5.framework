@@ -1,0 +1,9 @@
+{
+    "name": "game",
+    "dependence": ["core"],
+    "source":"src/js",
+    "file_list": [
+        "game.js",
+        "game.d.ts"
+    ]
+}
