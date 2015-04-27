@@ -1,5 +1,5 @@
 class GameResponse extends egret.EventDispatcher{
-	static instance:GameResponse
+	static instance:GameResponse;
 	public constructor(){
 		super()
 		if( GameResponse.instance != null ){
@@ -16,8 +16,12 @@ class GameResponse extends egret.EventDispatcher{
 	}
 
 	private sendEvent(key:string):void{
-		var ge:GameEvent = new GameEvent(key)
+		var ge:GameEvent = new GameEvent(key);
 		this.dispatchEvent(ge);
+	}
+
+	public Launch():void{
+		this.sendEvent(GameEvent.LAUNCH);
 	}
 
 	public Start():void{

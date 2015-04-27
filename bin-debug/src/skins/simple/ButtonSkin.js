@@ -1,9 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var skins;
 (function (skins) {
     var simple;
@@ -29,20 +23,21 @@ var skins;
                     ])
                 ];
             }
-            Object.defineProperty(ButtonSkin.prototype, "skinParts", {
+            var __egretProto__ = ButtonSkin.prototype;
+            Object.defineProperty(__egretProto__, "skinParts", {
                 get: function () {
                     return ButtonSkin._skinParts;
                 },
                 enumerable: true,
                 configurable: true
             });
-            ButtonSkin.prototype.labelDisplay_i = function () {
+            __egretProto__.labelDisplay_i = function () {
                 var t = new egret.gui.Label();
                 this.labelDisplay = t;
                 this.__s(t, ["bottom", "fontFamily", "left", "right", "size", "textAlign", "top", "verticalAlign"], [12, "Tahoma", 10, 10, 20, "center", 8, "middle"]);
                 return t;
             };
-            ButtonSkin.prototype.__4_i = function () {
+            __egretProto__.__4_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.__4 = t;
                 this.__s(t, ["percentHeight", "source", "percentWidth"], [100, "button_normal_png", 100]);

@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var RES;
 (function (RES) {
     var FontAnalyzer = (function (_super) {
@@ -37,32 +31,39 @@ var RES;
         function FontAnalyzer() {
             _super.call(this);
         }
-        /**
-         * 解析并缓存加载成功的数据
-         */
-        FontAnalyzer.prototype.analyzeData = function (resItem, data) {
+        var __egretProto__ = FontAnalyzer.prototype;
+        __egretProto__.analyzeConfig = function (resItem, data) {
+            var name = resItem.name;
+            var config;
+            var imageUrl = "";
+            try {
+                var str = data;
+                config = JSON.parse(str);
+            }
+            catch (e) {
+            }
+            if (config) {
+                imageUrl = this.getRelativePath(resItem.url, config["file"]);
+            }
+            else {
+                config = data;
+                imageUrl = this.getTexturePath(resItem.url, config);
+            }
+            this.sheetMap[name] = config;
+            return imageUrl;
+        };
+        __egretProto__.analyzeBitmap = function (resItem, data) {
             var name = resItem.name;
             if (this.fileDic[name] || !data) {
                 return;
             }
-            var config;
-            if (typeof (data) == "string") {
-                config = data;
-                this.sheetMap[name] = config;
-                resItem.loaded = false;
-                resItem.url = this.getTexturePath(resItem.url, config);
-            }
-            else {
-                var texture = data;
-                config = this.sheetMap[name];
-                delete this.sheetMap[name];
-                if (texture) {
-                    var spriteSheet = new egret.BitmapTextSpriteSheet(texture, config);
-                    this.fileDic[name] = spriteSheet;
-                }
-            }
+            var texture = data;
+            var config = this.sheetMap[name];
+            delete this.sheetMap[name];
+            var bitmapFont = new egret.BitmapFont(texture, config);
+            this.fileDic[name] = bitmapFont;
         };
-        FontAnalyzer.prototype.getTexturePath = function (url, fntText) {
+        __egretProto__.getTexturePath = function (url, fntText) {
             var file = "";
             var lines = fntText.split("\n");
             var pngLine = lines[2];
@@ -81,6 +82,16 @@ var RES;
                 url = file;
             }
             return url;
+        };
+        /**
+         * @inheritDoc
+         */
+        __egretProto__.destroyRes = function (name) {
+            if (this.fileDic[name]) {
+                delete this.fileDic[name];
+                return true;
+            }
+            return false;
         };
         return FontAnalyzer;
     })(RES.SheetAnalyzer);

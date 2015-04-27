@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -57,9 +51,20 @@ var egret;
                 if (popUp === void 0) { popUp = null; }
                 if (modal === void 0) { modal = false; }
                 _super.call(this, type, bubbles, cancelable);
+                /**
+                 * 弹出框对象
+                 * @member egret.gui.PopUpEvent#popUp
+                 */
+                this.popUp = null;
+                /**
+                 * 弹出窗口是否为模态，此属性仅在事件类型为ADD_POPUP时有效。
+                 * @member egret.gui.PopUpEvent#modal
+                 */
+                this.modal = false;
                 this.popUp = popUp;
                 this.modal = modal;
             }
+            var __egretProto__ = PopUpEvent.prototype;
             /**
              * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
              * @method egret.gui.PopUpEvent.dispatchPopUpEvent

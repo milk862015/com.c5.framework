@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -55,6 +49,15 @@ var egret;
                 if (parentKey === void 0) { parentKey = "parent"; }
                 _super.call(this);
                 /**
+                 * 要从item中获取子项列表的属性名
+                 */
+                this.childrenKey = "children";
+                /**
+                 * 要从item中获取父级项的属性名
+                 */
+                this.parentKey = "parent";
+                this._source = null;
+                /**
                  * 要显示的节点列表
                  */
                 this.nodeList = [];
@@ -63,7 +66,8 @@ var egret;
                 this.childrenKey = childrenKey;
                 this.parentKey = parentKey;
             }
-            Object.defineProperty(ObjectCollection.prototype, "source", {
+            var __egretProto__ = ObjectCollection.prototype;
+            Object.defineProperty(__egretProto__, "source", {
                 /**
                  * 数据源。注意：设置source会同时清空openNodes。
                  * @member egret.gui.ObjectCollection#source
@@ -89,7 +93,7 @@ var egret;
                 enumerable: true,
                 configurable: true
             });
-            Object.defineProperty(ObjectCollection.prototype, "openNodes", {
+            Object.defineProperty(__egretProto__, "openNodes", {
                 /**
                  * 处于展开状态的节点列表
                  * @member egret.gui.ObjectCollection#openNodes
@@ -104,7 +108,7 @@ var egret;
                 enumerable: true,
                 configurable: true
             });
-            Object.defineProperty(ObjectCollection.prototype, "length", {
+            Object.defineProperty(__egretProto__, "length", {
                 /**
                  * @member egret.gui.ObjectCollection#length
                  */
@@ -119,7 +123,7 @@ var egret;
              * @param index {number}
              * @returns {any}
              */
-            ObjectCollection.prototype.getItemAt = function (index) {
+            __egretProto__.getItemAt = function (index) {
                 return this.nodeList[index];
             };
             /**
@@ -127,7 +131,7 @@ var egret;
              * @param item {any}
              * @returns {number}
              */
-            ObjectCollection.prototype.getItemIndex = function (item) {
+            __egretProto__.getItemIndex = function (item) {
                 var length = this.nodeList.length;
                 for (var i = 0; i < length; i++) {
                     if (this.nodeList[i] === item) {
@@ -141,7 +145,7 @@ var egret;
              * @method egret.gui.ObjectCollection#itemUpdated
              * @param item {any}
              */
-            ObjectCollection.prototype.itemUpdated = function (item) {
+            __egretProto__.itemUpdated = function (item) {
                 var index = this.getItemIndex(item);
                 if (index != -1) {
                     this.dispatchCoEvent(gui.CollectionEventKind.UPDATE, index, -1, [item]);
@@ -152,7 +156,7 @@ var egret;
              * @method egret.gui.ObjectCollection#removeItem
              * @param item {any}
              */
-            ObjectCollection.prototype.removeItem = function (item) {
+            __egretProto__.removeItem = function (item) {
                 if (this.isItemOpen(item))
                     this.closeNode(item);
                 if (!item)
@@ -173,7 +177,7 @@ var egret;
                     this.dispatchCoEvent(gui.CollectionEventKind.REMOVE, index, -1, [item]);
                 }
             };
-            Object.defineProperty(ObjectCollection.prototype, "showRoot", {
+            Object.defineProperty(__egretProto__, "showRoot", {
                 /**
                  * 是否显示根节点,默认false。
                  * @member egret.gui.ObjectCollection#showRoot
@@ -203,7 +207,7 @@ var egret;
             /**
              * 添加打开的节点到列表
              */
-            ObjectCollection.prototype.addChildren = function (parent, list) {
+            __egretProto__.addChildren = function (parent, list) {
                 if (!parent.hasOwnProperty(this.childrenKey) || this._openNodes.indexOf(parent) == -1)
                     return;
                 var children = parent[this.childrenKey];
@@ -219,7 +223,7 @@ var egret;
              * @param item {any}
              * @returns {boolean}
              */
-            ObjectCollection.prototype.hasChildren = function (item) {
+            __egretProto__.hasChildren = function (item) {
                 if (item.hasOwnProperty(this.childrenKey))
                     return item[this.childrenKey].length > 0;
                 return false;
@@ -229,7 +233,7 @@ var egret;
              * @param item {any}
              * @returns {boolean}
              */
-            ObjectCollection.prototype.isItemOpen = function (item) {
+            __egretProto__.isItemOpen = function (item) {
                 return this._openNodes.indexOf(item) != -1;
             };
             /**
@@ -237,7 +241,7 @@ var egret;
              * @param item {any}
              * @param open {boolean}
              */
-            ObjectCollection.prototype.expandItem = function (item, open) {
+            __egretProto__.expandItem = function (item, open) {
                 if (open === void 0) { open = true; }
                 if (open)
                     this.openNode(item);
@@ -247,7 +251,7 @@ var egret;
             /**
              * 打开一个节点
              */
-            ObjectCollection.prototype.openNode = function (item) {
+            __egretProto__.openNode = function (item) {
                 if (this._openNodes.indexOf(item) == -1) {
                     this._openNodes.push(item);
                     var index = this.nodeList.indexOf(item);
@@ -268,7 +272,7 @@ var egret;
             /**
              * 关闭一个节点
              */
-            ObjectCollection.prototype.closeNode = function (item) {
+            __egretProto__.closeNode = function (item) {
                 var index = this._openNodes.indexOf(item);
                 if (index == -1)
                     return;
@@ -292,7 +296,7 @@ var egret;
              * @param item {any}
              * @returns {number}
              */
-            ObjectCollection.prototype.getDepth = function (item) {
+            __egretProto__.getDepth = function (item) {
                 var depth = 0;
                 var parent = item[this.parentKey];
                 while (parent) {
@@ -307,7 +311,7 @@ var egret;
              * 刷新数据源。
              * @method egret.gui.ObjectCollection#refresh
              */
-            ObjectCollection.prototype.refresh = function () {
+            __egretProto__.refresh = function () {
                 this.nodeList = [];
                 if (this._source) {
                     if (this._showRoot) {
@@ -320,7 +324,7 @@ var egret;
             /**
              * 抛出事件
              */
-            ObjectCollection.prototype.dispatchCoEvent = function (kind, location, oldLocation, items, oldItems) {
+            __egretProto__.dispatchCoEvent = function (kind, location, oldLocation, items, oldItems) {
                 if (kind === void 0) { kind = null; }
                 if (location === void 0) { location = -1; }
                 if (oldLocation === void 0) { oldLocation = -1; }

@@ -31,7 +31,7 @@ class Main extends egret.DisplayObjectContainer{
      * 加载进度界面
      */
     private loadingView:LoadingUI;
-
+    private loadArr:string[] = ["preLoad","ready","game"];//加载数据组
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE,this.onAddToStage,this);
@@ -40,6 +40,7 @@ class Main extends egret.DisplayObjectContainer{
     private onAddToStage(event:egret.Event){
         //注入自定义的素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter",AssetAdapter);
+
         //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
         egret.gui.Theme.load("resource/theme.thm");
 
@@ -50,7 +51,7 @@ class Main extends egret.DisplayObjectContainer{
     }
 
     /**
-     * 配置文件加载完成,开始预加载preload资源组。
+     * 配置文件加载完成,开始预加载preLoad资源组。
      */
     private onConfigComplete(event:RES.ResourceEvent):void{
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
@@ -59,10 +60,10 @@ class Main extends egret.DisplayObjectContainer{
         RES.loadGroup("loadRes");
     }
     /**
-     * preload资源组加载完成
+     * preLoad资源组加载完成
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
-        if(event.groupName=="preload"){
+        if(event.groupName=="preLoad"){
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onResourceLoadComplete,this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
@@ -71,18 +72,38 @@ class Main extends egret.DisplayObjectContainer{
             //设置加载进度界面
             this.loadingView  = new LoadingUI(this.getTotalNeedLoad());
             this.stage.addChild(this.loadingView);
+
             if(SGame.IsShowLaunch){
-                RES.loadGroup("launch",2);
+                this.loadArr.push('launch');
+                //RES.loadGroup("launch",2);
             }
             if(SGame.IsShowResult){
-                RES.loadGroup("result",1);
+                this.loadArr.push('result');
+                //RES.loadGroup("result",1);
             }
-            RES.loadGroup("preload",0);
+
+            var len:number = this.loadArr.length;
+            for( var i:number=0;i<len;i++ ){
+                RES.loadGroup(this.loadArr[i],i);
+            }
+
+            //RES.loadGroup("feedback",3);
+            //RES.loadGroup("read",4);
+            //RES.loadGroup("fight",5);
+            //RES.loadGroup("preload",0);
         }
     }
 
     private getTotalNeedLoad():number{
-        var arr:string[] = ["preload","launch","result"];
+        //var arr:string[] = ["preload","feedback","read","fight"];
+        var arr:string[] = this.loadArr;
+        if(SGame.IsShowLaunch){
+            arr.push("launch")
+        }
+        if(SGame.IsShowResult){
+            arr.push("result")
+        }
+
         var num:number=0;
         var len:number = arr.length;
         for( var i=0;i<len;i++ ){
@@ -96,10 +117,13 @@ class Main extends egret.DisplayObjectContainer{
      * preload资源组加载进度
      */
     private onResourceProgress(event:RES.ResourceEvent):void {
-        if(event.groupName=="preload"){
+        if( this.loadArr.indexOf(event.groupName) !=-1 ){
             this.loadingView.AddLoadComplete();
-            this.loadingView.setProgress(event.itemsLoaded,event.itemsTotal);
         }
+
+        //if(event.groupName=="preload" || event.groupName=="launch" || event.groupName=="result" ){
+        //this.loadingView.setProgress(event.itemsLoaded,event.itemsTotal);
+        //}
     }
 
     private gameLayer:egret.DisplayObjectContainer;
@@ -122,25 +146,28 @@ class Main extends egret.DisplayObjectContainer{
         this.addChild(this.guiLayer);
 
         //特效层
-        var eLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer()
+        var eLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
         this.addChild(eLayer);
 
         GameManage.GetInstance().Init();
+        FightConfig.init();//初始化配置数据
         console.log("game init");
-        Core.Stage = this;
+        Core.Stage = this.stage;
         Core.UILayer = this.guiLayer;
         Core.GameLayer = this.gameLayer;
         Core.EffectLayer = eLayer;
-        UIManage.GetInstance().Show("LoginSkin");
+        if( SGame.IsShowLaunch ){
+            GameResponse.GetInstance().Launch();
+        }else{
+            GameResponse.GetInstance().Start();
+        }
     }
 
-    private testResponse(e:GameEvent):void{
-        egret.gui.Alert.show("这是一个弹窗!","弹窗")
-    }
-
-    private onButtonClick(event:egret.TouchEvent):void{
-        GameResponse.GetInstance().Start()
-    }
+    //private testResponse(e:GameEvent):void{
+    //    egret.gui.Alert.show("这是一个弹窗!","弹窗")
+    //}
+    //
+    //private onButtonClick(event:egret.TouchEvent):void{
+    //    GameResponse.GetInstance().Start()
+    //}
 }
-
-

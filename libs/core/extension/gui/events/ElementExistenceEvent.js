@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -51,9 +45,20 @@ var egret;
                 if (element === void 0) { element = null; }
                 if (index === void 0) { index = -1; }
                 _super.call(this, type, bubbles, cancelable);
+                /**
+                 * 指向已添加或删除元素的位置的索引。
+                 * @member egret.gui.ElementExistenceEvent#index
+                 */
+                this.index = NaN;
+                /**
+                 * 对已添加或删除的视觉元素的引用。
+                 * @member egret.gui.ElementExistenceEvent#element
+                 */
+                this.element = null;
                 this.element = element;
                 this.index = index;
             }
+            var __egretProto__ = ElementExistenceEvent.prototype;
             /**
              * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
              * @method egret.gui.ElementExistenceEvent.dispatchElementExistenceEvent

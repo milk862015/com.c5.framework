@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -58,16 +52,27 @@ var egret;
                  * @member egret.gui.AddItems#position
                  */
                 this.position = AddItems.LAST;
+                /**
+                 * 相对的显示元素的实例名
+                 * @member egret.gui.AddItems#relativeTo
+                 */
+                this.relativeTo = null;
+                /**
+                 * 目标实例名
+                 * @member egret.gui.AddItems#target
+                 */
+                this.target = null;
                 this.target = target;
                 this.propertyName = propertyName;
                 this.position = position;
                 this.relativeTo = relativeTo;
             }
+            var __egretProto__ = AddItems.prototype;
             /**
              * @method egret.gui.AddItems#initialize
              * @param parent {IStateClient}
              */
-            AddItems.prototype.initialize = function (parent) {
+            __egretProto__.initialize = function (parent) {
                 var targetElement = (parent[this.target]);
                 if (!targetElement || targetElement instanceof gui.SkinnableComponent)
                     return;
@@ -84,7 +89,7 @@ var egret;
              * @method egret.gui.AddItems#apply
              * @param parent {IContainer}
              */
-            AddItems.prototype.apply = function (parent) {
+            __egretProto__.apply = function (parent) {
                 var index;
                 var relative;
                 try {
@@ -118,7 +123,7 @@ var egret;
              * @method egret.gui.AddItems#remove
              * @param parent {IContainer}
              */
-            AddItems.prototype.remove = function (parent) {
+            __egretProto__.remove = function (parent) {
                 var dest = this.propertyName == null || this.propertyName == "" ? parent : parent[this.propertyName];
                 var targetElement = (parent[this.target]);
                 if (!targetElement || !dest)

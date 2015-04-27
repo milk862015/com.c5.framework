@@ -1,9 +1,3 @@
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var GameEvent = (function (_super) {
     __extends(GameEvent, _super);
     function GameEvent(type, bubbles, cancelable) {
@@ -13,6 +7,8 @@ var GameEvent = (function (_super) {
         this.Num = 0; //消除个数
         this.Combo = 0; //Combo次数
     }
+    var __egretProto__ = GameEvent.prototype;
+    GameEvent.LAUNCH = "game_event_launch"; //游戏launch
     GameEvent.START = "game_event_start"; //游戏开始
     GameEvent.TIME_START = "game_event_time_start"; //开始计时
     GameEvent.TIME_PAUSE = "game_event_time_pause"; //暂停计时

@@ -24,44 +24,55 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var LoadingUI = (function (_super) {
     __extends(LoadingUI, _super);
-    function LoadingUI() {
+    function LoadingUI(tc) {
         _super.call(this);
+        this._curComplete = 0;
+        this._totalComplete = 0;
+        this._totalComplete = tc;
         this.createView();
     }
-    LoadingUI.prototype.createView = function () {
-        this._bg = new egret.Shape();
-        this._bg.graphics.lineStyle(5, 0x33ccff);
-        this._bg.graphics.beginFill(0x000000);
-        this._bg.graphics.drawRect(0, 0, 300, 20);
-        this._bg.graphics.endFill();
-        this.addChild(this._bg);
-        this._bg.x = 640 * 0.5 - 300 * 0.5;
-        this._bg.y = 250;
-        this._sp = new egret.Shape();
-        this._sp.graphics.beginFill(0xffffff);
-        this._sp.graphics.drawRect(0, 0, 300, 20);
-        this._sp.graphics.endFill();
+    var __egretProto__ = LoadingUI.prototype;
+    __egretProto__.createView = function () {
+        this._bg = new egret.Bitmap();
+        this._bg.texture = RES.getRes('loading.loadbg_png');
+        this._bg.x = Config.STAGE_WIDTH * 0.5 - this._bg.width * 0.5;
+        this._bg.y = 450;
+        this._baseW = this._bg.width;
+        this._sp = new egret.Bitmap();
         this.addChild(this._sp);
-        this._sp.x = this._bg.x;
-        this._sp.y = this._bg.y;
+        this._sp.texture = RES.getRes('loading.green_png');
+        this._sp.scale9Grid = new egret.Rectangle(11, 12, 4, 3);
+        this._sp.x = this._bg.x + 2;
+        this._sp.y = 450 + 3;
+        this.addChild(this._bg);
+        this._ball = new egret.Bitmap();
+        this._ball.texture = RES.getRes('loading.ball_png');
+        this._ball.x = this._bg.x - 13;
+        this._baseX = this._ball.x;
+        this._ball.y = 390;
+        this.addChild(this._ball);
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.y = 300;
-        this.textField.width = 640;
-        this.textField.height = 100;
-        this.textField.textAlign = "center";
+        this.textField.x = 290;
+        this.textField.y = 480;
+        this.textField.textAlign = 'center';
+        this._logo = new egret.Bitmap();
+        this._logo.texture = RES.getRes('logo');
+        this._logo.x = 0;
+        this._logo.y = 100;
+        this.addChild(this._logo);
     };
-    LoadingUI.prototype.setProgress = function (current, total) {
-        this._sp.scaleX = current / total;
-        this.textField.text = "资源加载中..." + current + "/" + total;
+    __egretProto__.AddLoadComplete = function () {
+        this._curComplete = this._curComplete + 1;
+        this.setProgress(this._curComplete, this._totalComplete);
+    };
+    __egretProto__.setProgress = function (current, total) {
+        var per = Math.floor(current / total * 100);
+        this._sp.width = Math.floor((this._baseW - 3) * per / 100);
+        this._ball.x = this._baseX + this._baseW * per / 100;
+        this.textField.text = per + "%";
     };
     return LoadingUI;
 })(egret.Sprite);

@@ -24,81 +24,104 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
     (function (gui) {
+        /**
+         *  @classdesc
+         * HScrollBar（水平 ScrollBar）控件可以在因数据太多而不能在显示区域中以水平方向完全显示时控制显示的数据部分。
+         尽管可以使用 HScrollBar 控件作为独立控件，但通常将其结合作为另一组组件的一部分来提供滚动功能
+         */
         var HScrollBar = (function (_super) {
             __extends(HScrollBar, _super);
             function HScrollBar() {
-                _super.call(this);
-                this._autoHideTimer = NaN;
-                this._autoHideDelay = 3000;
-                this.trackAlpha = 0.4;
-                this.thumbAlpha = 0.8;
-                this._autoHideShowAnimat = null;
-                this._animatTargetIsShow = false;
+                _super.apply(this, arguments);
+                this._thumbLengthRatio = 1;
             }
-            HScrollBar.prototype._setViewportMetric = function (width, contentWidth) {
-                this._setMaximun(contentWidth - width);
+            var __egretProto__ = HScrollBar.prototype;
+            /**
+             *
+             * @param width
+             * @param contentWidth
+             * @private
+             */
+            __egretProto__._setViewportMetric = function (width, contentWidth) {
+                var max = Math.max(0, contentWidth - width);
+                this._setMaximun(max);
                 this._setMinimun(0);
-                this._setVisible(width < contentWidth);
-                var thumbLength = width * width / contentWidth;
-                this.thumb._setWidth(thumbLength);
+                this._thumbLengthRatio = (contentWidth > width) ? width / contentWidth : 1;
             };
-            HScrollBar.prototype._setValue = function (value) {
+            Object.defineProperty(__egretProto__, "trackAlpha", {
+                get: function () {
+                    return 1;
+                },
+                set: function (value) {
+                    egret.Logger.warningWithErrorId(1016, "HScrollBar.trackAlpha");
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(__egretProto__, "thumbAlpha", {
+                get: function () {
+                    return 1;
+                },
+                set: function (value) {
+                    egret.Logger.warningWithErrorId(1016, "HScrollBar.thumbAlpha");
+                },
+                enumerable: true,
+                configurable: true
+            });
+            __egretProto__.setPosition = function (value) {
+                this._setValue(value);
+            };
+            __egretProto__.getPosition = function () {
+                return this._getValue();
+            };
+            /**
+             *
+             * @param value
+             * @private
+             */
+            __egretProto__._setValue = function (value) {
                 value = Math.max(0, value);
                 _super.prototype._setValue.call(this, value);
-                //被赋值时自动显示
-                this.hideOrShow(true);
-                this.autoHide();
             };
-            HScrollBar.prototype.setValue = function (value) {
+            /**
+             * [覆盖] 更新 value 属性，并且如果 viewport 为非 null，则将其 horizontalScrollPosition 设置为 value
+             * @param value
+             */
+            __egretProto__.setValue = function (value) {
                 _super.prototype.setValue.call(this, value);
-                //被赋值时自动显示
-                this.hideOrShow(true);
-                this.autoHide();
             };
-            HScrollBar.prototype.autoHide = function () {
-                if (this._autoHideDelay != NaN) {
-                    egret.clearTimeout(this._autoHideDelay);
-                }
-                this._autoHideTimer = egret.setTimeout(this.hideOrShow.bind(this, false), this, this._autoHideDelay);
-            };
-            HScrollBar.prototype.hideOrShow = function (show) {
-                var _this = this;
-                if (this._autoHideShowAnimat == null) {
-                    this._autoHideShowAnimat = new gui.Animation(function (b) {
-                        var a = b.currentValue["alpha"];
-                        _this.thumb.alpha = _this.thumbAlpha * a;
-                        _this.track.alpha = _this.trackAlpha * a;
-                    }, this);
-                }
-                else {
-                    if (this._animatTargetIsShow == show)
-                        return;
-                    this._autoHideShowAnimat.isPlaying && this._autoHideShowAnimat.stop();
-                }
-                this._animatTargetIsShow = show;
-                var animat = this._autoHideShowAnimat;
-                animat.motionPaths = [{
-                    prop: "alpha",
-                    from: this.thumb.alpha / this.thumbAlpha,
-                    to: show ? 1 : 0
-                }];
-                animat.duration = show ? 100 : 500;
-                animat.play();
-            };
-            HScrollBar.prototype._animationUpdateHandler = function (animation) {
+            /**
+             *
+             * @param animation
+             * @private
+             */
+            __egretProto__._animationUpdateHandler = function (animation) {
                 this.pendingValue = animation.currentValue["value"];
                 this.value = animation.currentValue["value"];
                 this.dispatchEventWith(egret.Event.CHANGE);
+            };
+            /**
+             * 设置外观部件的边界，这些外观部件的几何图形不是完全由外观的布局指定的
+             */
+            __egretProto__.updateSkinDisplayList = function () {
+                if (!this.thumb || !this.track)
+                    return;
+                var thumbWidth = this.track.layoutBoundsWidth * this._thumbLengthRatio;
+                var oldThumbWidth = this.thumb.layoutBoundsWidth;
+                var thumbRange = this.track.layoutBoundsWidth - this.thumb.layoutBoundsWidth;
+                var range = this.maximum - this.minimum;
+                var thumbPosTrackX = (range > 0) ? ((this.pendingValue - this.minimum) / range) * thumbRange : 0;
+                var thumbPos = this.track.localToGlobal(thumbPosTrackX, 0);
+                var thumbPosX = thumbPos.x;
+                var thumbPosY = thumbPos.y;
+                var thumbPosParentX = this.thumb.parent.globalToLocal(thumbPosX, thumbPosY, egret.Point.identity).x;
+                this.thumb.setLayoutBoundsPosition(Math.round(thumbPosParentX), this.thumb.layoutBoundsY);
+                if (thumbWidth != oldThumbWidth)
+                    this.thumb.setLayoutBoundsSize(thumbWidth, this.thumb.layoutBoundsHeight);
             };
             return HScrollBar;
         })(gui.HSlider);

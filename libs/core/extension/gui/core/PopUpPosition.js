@@ -37,6 +37,7 @@ var egret;
         var PopUpPosition = (function () {
             function PopUpPosition() {
             }
+            var __egretProto__ = PopUpPosition.prototype;
             /**
              * 在组件上方弹出
              * @constant egret.gui.PopUpPosition.ABOVE
@@ -67,6 +68,11 @@ var egret;
              * @constant egret.gui.PopUpPosition.RIGHT
              */
             PopUpPosition.RIGHT = "right";
+            /**
+             * 在屏幕中心弹出
+             * @constant egret.gui.PopUpPosition.SCREEN_CENTER
+             */
+            PopUpPosition.SCREEN_CENTER = "screenCenter";
             return PopUpPosition;
         })();
         gui.PopUpPosition = PopUpPosition;

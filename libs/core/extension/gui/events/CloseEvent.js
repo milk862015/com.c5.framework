@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -55,8 +49,14 @@ var egret;
                 if (cancelable === void 0) { cancelable = false; }
                 if (detail === void 0) { detail = -1; }
                 _super.call(this, type, bubbles, cancelable);
+                /**
+                 * 触发关闭事件的细节。某些窗口组件用此属性来区分窗口中被点击的按钮。
+                 * @member egret.gui.CloseEvent#detail
+                 */
+                this.detail = null;
                 this.detail = detail;
             }
+            var __egretProto__ = CloseEvent.prototype;
             /**
              * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
              * @method egret.gui.CloseEvent.dispatchCloseEvent

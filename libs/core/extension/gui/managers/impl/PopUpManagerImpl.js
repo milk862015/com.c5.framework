@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -57,8 +51,10 @@ var egret;
                 this._modalColor = 0x000000;
                 this._modalAlpha = 0.5;
                 this.invalidateModalFlag = false;
+                this.modalMask = null;
             }
-            Object.defineProperty(PopUpManagerImpl.prototype, "popUpList", {
+            var __egretProto__ = PopUpManagerImpl.prototype;
+            Object.defineProperty(__egretProto__, "popUpList", {
                 /**
                  * 已经弹出的窗口列表
                  * @member egret.gui.PopUpManagerImpl#popUpList
@@ -72,7 +68,7 @@ var egret;
             /**
              * 根据popUp获取对应的popUpData
              */
-            PopUpManagerImpl.prototype.findPopUpData = function (popUp) {
+            __egretProto__.findPopUpData = function (popUp) {
                 var list = this.popUpDataList;
                 var length = list.length;
                 for (var i = 0; i < length; i++) {
@@ -89,7 +85,7 @@ var egret;
              * @param modal {boolean} 是否启用模态。即禁用弹出窗口所在层以下的鼠标事件。默认false。
              * @param center {boolean} 是否居中窗口。等效于在外部调用centerPopUp()来居中。默认true。
              */
-            PopUpManagerImpl.prototype.addPopUp = function (popUp, modal, center) {
+            __egretProto__.addPopUp = function (popUp, modal, center) {
                 if (modal === void 0) { modal = false; }
                 if (center === void 0) { center = true; }
                 var uiStage = gui.UIGlobals.uiStage;
@@ -116,7 +112,7 @@ var egret;
             /**
              * 从舞台移除
              */
-            PopUpManagerImpl.prototype.onRemoved = function (event) {
+            __egretProto__.onRemoved = function (event) {
                 var index = 0;
                 var list = this.popUpDataList;
                 var length = list.length;
@@ -134,7 +130,7 @@ var egret;
                     index++;
                 }
             };
-            Object.defineProperty(PopUpManagerImpl.prototype, "modalColor", {
+            Object.defineProperty(__egretProto__, "modalColor", {
                 /**
                  * 模态遮罩的填充颜色
                  * @member egret.gui.PopUpManagerImpl#modalColor
@@ -151,7 +147,7 @@ var egret;
                 enumerable: true,
                 configurable: true
             });
-            Object.defineProperty(PopUpManagerImpl.prototype, "modalAlpha", {
+            Object.defineProperty(__egretProto__, "modalAlpha", {
                 /**
                  * 模态遮罩的透明度
                  * @member egret.gui.PopUpManagerImpl#modalAlpha
@@ -171,7 +167,7 @@ var egret;
             /**
              * 标记一个UIStage的模态层失效
              */
-            PopUpManagerImpl.prototype.invalidateModal = function () {
+            __egretProto__.invalidateModal = function () {
                 if (!this.invalidateModalFlag) {
                     this.invalidateModalFlag = true;
                     gui.UIGlobals.stage.addEventListener(egret.Event.ENTER_FRAME, this.validateModal, this);
@@ -179,7 +175,7 @@ var egret;
                     gui.UIGlobals.stage.invalidate();
                 }
             };
-            PopUpManagerImpl.prototype.validateModal = function (event) {
+            __egretProto__.validateModal = function (event) {
                 this.invalidateModalFlag = false;
                 gui.UIGlobals.stage.removeEventListener(egret.Event.ENTER_FRAME, this.validateModal, this);
                 gui.UIGlobals.stage.removeEventListener(egret.Event.RENDER, this.validateModal, this);
@@ -188,7 +184,7 @@ var egret;
             /**
              * 更新窗口模态效果
              */
-            PopUpManagerImpl.prototype.updateModal = function (uiStage) {
+            __egretProto__.updateModal = function (uiStage) {
                 var popUpContainer = uiStage.popUpContainer;
                 var found = false;
                 for (var i = popUpContainer.numElements - 1; i >= 0; i--) {
@@ -225,7 +221,7 @@ var egret;
              * @method egret.gui.PopUpManagerImpl#removePopUp
              * @param popUp {IVisualElement} 要移除的窗口
              */
-            PopUpManagerImpl.prototype.removePopUp = function (popUp) {
+            __egretProto__.removePopUp = function (popUp) {
                 if (popUp && popUp.parent && this.findPopUpData(popUp)) {
                     if ("removeElement" in popUp.parent)
                         (popUp.parent).removeElement(popUp);
@@ -240,7 +236,7 @@ var egret;
              * @method egret.gui.PopUpManagerImpl#centerPopUp
              * @param popUp {IVisualElement} 要居中显示的窗口
              */
-            PopUpManagerImpl.prototype.centerPopUp = function (popUp) {
+            __egretProto__.centerPopUp = function (popUp) {
                 popUp.top = popUp.bottom = popUp.left = popUp.right = NaN;
                 popUp.verticalCenter = popUp.horizontalCenter = 0;
                 var parent = popUp.parent;
@@ -256,7 +252,7 @@ var egret;
              * @method egret.gui.PopUpManagerImpl#bringToFront
              * @param popUp {IVisualElement} 要最前显示的窗口
              */
-            PopUpManagerImpl.prototype.bringToFront = function (popUp) {
+            __egretProto__.bringToFront = function (popUp) {
                 var data = this.findPopUpData(popUp);
                 if (data && popUp.parent && "popUpContainer" in popUp.parent) {
                     var uiStage = (popUp.parent);
@@ -276,9 +272,18 @@ var egret;
              * @param modal {boolea}
              */
             function PopUpData(popUp, modal) {
+                /**
+                 * @member egret.PopUpData#popUp
+                 */
+                this.popUp = null;
+                /**
+                 * @member egret.PopUpData#modal
+                 */
+                this.modal = false;
                 this.popUp = popUp;
                 this.modal = modal;
             }
+            var __egretProto__ = PopUpData.prototype;
             return PopUpData;
         })();
         PopUpData.prototype.__class__ = "egret.gui.PopUpData";

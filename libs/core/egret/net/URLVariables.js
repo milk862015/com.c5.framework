@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -37,57 +31,86 @@ var egret;
      * @classdesc
      * 使用 URLVariables 类可以在应用程序和服务器之间传输变量。
      * 将 URLVariables 对象与 URLLoader 类的方法、URLRequest 类的 data 属性一起使用。
-     * @extends egret.HashObject
+     * @link http://docs.egret-labs.org/post/manual/net/senddata.html 发送带参数的请求
      */
     var URLVariables = (function (_super) {
         __extends(URLVariables, _super);
         /**
+         * 创建一个 egret.URLVariables 对象
          * @method egret.URLVariables#constructor
          * @param source {String} 包含名称/值对的 URL 编码的字符串。
          */
         function URLVariables(source) {
             if (source === void 0) { source = null; }
             _super.call(this);
+            /**
+             * 此 URLVariables 储存的键值对数据对象。
+             * @member egret.URLVariables#variables
+             */
+            this.variables = null;
             if (source !== null) {
                 this.decode(source);
             }
         }
+        var __egretProto__ = URLVariables.prototype;
         /**
          * 将变量字符串转换为此 URLVariables.variables 对象的属性。
          * @method egret.URLVariables#decode
          * @param source {string}
          */
-        URLVariables.prototype.decode = function (source) {
+        __egretProto__.decode = function (source) {
             if (!this.variables) {
                 this.variables = {};
             }
             source = source.split("+").join(" ");
             var tokens, re = /[?&]?([^=]+)=([^&]*)/g;
             while (tokens = re.exec(source)) {
-                this.variables[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+                var key = decodeURIComponent(tokens[1]), val = decodeURIComponent(tokens[2]);
+                //没有重复键值，直接赋值
+                if ((key in this.variables) == false) {
+                    this.variables[key] = val;
+                    continue;
+                }
+                //有重复键值，如果已经存在数组，直接push到数组，否则创建一个新数组
+                var value = this.variables[key];
+                if (value instanceof Array) {
+                    value.push(val);
+                }
+                else {
+                    this.variables[key] = [value, val];
+                }
             }
         };
         /**
          * 以 MIME 内容编码格式 application/x-www-form-urlencoded 返回包含所有可枚举变量的字符串。
          * @method egret.URLVariables#toString
          */
-        URLVariables.prototype.toString = function () {
+        __egretProto__.toString = function () {
             if (!this.variables) {
                 return "";
             }
             var variables = this.variables;
-            var str = "";
-            var isFirst = true;
+            var stringArray = [];
             for (var key in variables) {
-                if (isFirst) {
-                    isFirst = false;
-                }
-                else {
-                    str += "&";
-                }
-                str += key + "=" + variables[key];
+                stringArray.push(this.encodeValue(key, variables[key]));
             }
-            return str;
+            return stringArray.join("&");
+        };
+        __egretProto__.encodeValue = function (key, value) {
+            if (value instanceof Array) {
+                return this.encodeArray(key, value);
+            }
+            else {
+                return encodeURIComponent(key) + "=" + encodeURIComponent(value);
+            }
+        };
+        __egretProto__.encodeArray = function (key, value) {
+            if (!key)
+                return "";
+            if (value.length == 0) {
+                return encodeURIComponent(key) + "=";
+            }
+            return value.map(function (v) { return encodeURIComponent(key) + "=" + encodeURIComponent(v); }).join("&");
         };
         return URLVariables;
     })(egret.HashObject);

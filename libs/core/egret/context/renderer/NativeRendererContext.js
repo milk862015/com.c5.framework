@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
@@ -37,6 +31,7 @@ var egret;
      * @classdesc
      * NativeRendererContext 是引擎在Native上的渲染上下文。
      * @extends egret.HashObject
+     * @private
      */
     var NativeRendererContext = (function (_super) {
         __extends(NativeRendererContext, _super);
@@ -45,24 +40,21 @@ var egret;
          */
         function NativeRendererContext() {
             _super.call(this);
-            /**
-             * 渲染全部纹理的时间开销
-             * @readonly
-             * @member egret.NativeRendererContext#renderCost
-             */
-            this.renderCost = 0;
-            /**
-             * 绘制纹理的缩放比率，默认值为1
-             * @member egret.NativeRendererContext#texture_scale_factor
-             */
-            this.texture_scale_factor = 1;
-            this.initBlendMode();
+            this.currentAlpha = NaN;
+            this.currentBlendMode = null;
         }
+        var __egretProto__ = NativeRendererContext.prototype;
+        __egretProto__._setTextureScaleFactor = function (value) {
+            _super.prototype._setTextureScaleFactor.call(this, value);
+            if (egret_native.Graphics.setTextureScaleFactor != null) {
+                egret_native.Graphics.setTextureScaleFactor(value);
+            }
+        };
         /**
          * @method egret.NativeRendererContext#clearScreen
          * @private
          */
-        NativeRendererContext.prototype.clearScreen = function () {
+        __egretProto__.clearScreen = function () {
             egret_native.Graphics.clearScreen(0, 0, 0);
         };
         /**
@@ -73,7 +65,7 @@ var egret;
          * @param w {number}
          * @param h {numbe}
          */
-        NativeRendererContext.prototype.clearRect = function (x, y, w, h) {
+        __egretProto__.clearRect = function (x, y, w, h) {
         };
         /**
          * 绘制图片
@@ -89,7 +81,7 @@ var egret;
          * @param destHeigh {any}
          * @param repeat {string}
          */
-        NativeRendererContext.prototype.drawImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
+        __egretProto__.drawImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
             if (repeat === void 0) { repeat = undefined; }
             if (repeat !== undefined) {
                 this.drawRepeatImage(texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat);
@@ -98,14 +90,38 @@ var egret;
             else {
                 egret_native.Graphics.drawImage(texture._bitmapData, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
             }
-            egret.Profiler.getInstance().onDrawImage();
+            _super.prototype.drawImage.call(this, texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat);
         };
-        NativeRendererContext.prototype.drawRepeatImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
+        /**
+         * 绘制9宫图片
+         * @method egret.RendererContext#drawImageScale9
+         * @param texture {Texture}
+         * @param sourceX {any}
+         * @param sourceY {any}
+         * @param sourceWidth {any}
+         * @param sourceHeight {any}
+         * @param destX {any}
+         * @param destY {any}
+         * @param destWidth {any}
+         * @param destHeigh {any}
+         */
+        __egretProto__.drawImageScale9 = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, offX, offY, destWidth, destHeight, rect) {
+            if (egret_native.Graphics.drawImageScale9 != null) {
+                egret_native.Graphics.drawImageScale9(texture._bitmapData, sourceX, sourceY, sourceWidth, sourceHeight, offX, offY, destWidth, destHeight, rect.x, rect.y, rect.width, rect.height);
+                this._addOneDraw();
+                return true;
+            }
+            return false;
+        };
+        __egretProto__.drawRepeatImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
+            var texture_scale_factor = egret.MainContext.instance.rendererContext._texture_scale_factor;
+            sourceWidth = sourceWidth * texture_scale_factor;
+            sourceHeight = sourceHeight * texture_scale_factor;
             for (var x = destX; x < destWidth; x += sourceWidth) {
                 for (var y = destY; y < destHeight; y += sourceHeight) {
                     var destW = Math.min(sourceWidth, destWidth - x);
                     var destH = Math.min(sourceHeight, destHeight - y);
-                    this.drawImage(texture, sourceX, sourceY, destW, destH, x, y, destW, destH);
+                    this.drawImage(texture, sourceX, sourceY, destW / texture_scale_factor, destH / texture_scale_factor, x, y, destW, destH);
                 }
             }
         };
@@ -115,7 +131,7 @@ var egret;
          * @param matrix {egret.Matrix}
          * @stable A
          */
-        NativeRendererContext.prototype.setTransform = function (matrix) {
+        __egretProto__.setTransform = function (matrix) {
             egret_native.Graphics.setTransform(matrix.a, matrix.b, matrix.c, matrix.d, matrix.tx, matrix.ty);
         };
         /**
@@ -125,32 +141,43 @@ var egret;
          * @stable A
          * @param blendMode {egret.BlendMode}
          */
-        NativeRendererContext.prototype.setAlpha = function (value, blendMode) {
-            if (this.currentAlpha != value) {
-                egret_native.Graphics.setGlobalAlpha(value);
-                this.currentAlpha = value;
-            }
+        __egretProto__.setAlpha = function (value, blendMode) {
+            //if (this.currentAlpha != value) {
+            egret_native.Graphics.setGlobalAlpha(value);
+            //this.currentAlpha = value;
+            //}
             this.setBlendMode(blendMode);
         };
-        NativeRendererContext.prototype.setBlendMode = function (blendMode) {
+        __egretProto__.setBlendMode = function (blendMode) {
             if (!blendMode) {
                 blendMode = egret.BlendMode.NORMAL;
             }
-            if (this.currentBlendMode != blendMode) {
-                var blendModeArg = this.blendModes[blendMode];
-                if (blendModeArg) {
-                    egret_native.Graphics.setBlendArg(blendModeArg[0], blendModeArg[1]);
-                    this.currentBlendMode = blendMode;
-                }
+            //if (this.currentBlendMode != blendMode) {
+            var blendModeArg = egret.RendererContext.blendModesForGL[blendMode];
+            if (blendModeArg) {
+                egret_native.Graphics.setBlendArg(blendModeArg[0], blendModeArg[1]);
+                this.currentBlendMode = blendMode;
             }
+            //}
         };
         /**
          * 设置渲染文本参数
          * @method egret.NativeRendererContext#setupFont
          * @param textField {TextField}
          */
-        NativeRendererContext.prototype.setupFont = function (textField) {
-            egret_native.Label.createLabel(egret.TextField.default_fontFamily, textField._size, "");
+        __egretProto__.setupFont = function (textField, style) {
+            if (style === void 0) { style = null; }
+            style = style || {};
+            var properties = textField._properties;
+            var size = style["size"] == null ? properties._size : style["size"];
+            var outline;
+            if (style.stroke != null) {
+                outline = style.stroke;
+            }
+            else {
+                outline = properties._stroke;
+            }
+            egret_native.Label.createLabel(egret.TextField.default_fontFamily, size, "", outline);
         };
         /**
          * 测量文本
@@ -158,7 +185,7 @@ var egret;
          * @param text {string}
          * @returns {number}
          */
-        NativeRendererContext.prototype.measureText = function (text) {
+        __egretProto__.measureText = function (text) {
             return egret_native.Label.getTextSize(text)[0];
         };
         /**
@@ -170,18 +197,37 @@ var egret;
          * @param y {number}
          * @param maxWidth {numbe}
          */
-        NativeRendererContext.prototype.drawText = function (textField, text, x, y, maxWidth) {
-            egret.Profiler.getInstance().onDrawImage();
-            egret_native.Label.setTextColor(textField._textColor);
+        __egretProto__.drawText = function (textField, text, x, y, maxWidth, style) {
+            if (style === void 0) { style = null; }
+            this.setupFont(textField, style);
+            style = style || {};
+            var properties = textField._properties;
+            var textColor;
+            if (style.textColor != null) {
+                textColor = style.textColor;
+            }
+            else {
+                textColor = properties._textColor;
+            }
+            var strokeColor;
+            if (style.strokeColor != null) {
+                strokeColor = style.strokeColor;
+            }
+            else {
+                strokeColor = properties._strokeColor;
+            }
+            egret_native.Label.setTextColor(textColor);
+            egret_native.Label.setStrokeColor(strokeColor);
             egret_native.Label.drawText(text, x, y - 2);
+            _super.prototype.drawText.call(this, textField, text, x, y, maxWidth, style);
         };
-        NativeRendererContext.prototype.pushMask = function (mask) {
+        __egretProto__.pushMask = function (mask) {
             egret_native.Graphics.pushClip(mask.x, mask.y, mask.width, mask.height);
         };
-        NativeRendererContext.prototype.popMask = function () {
+        __egretProto__.popMask = function () {
             egret_native.Graphics.popClip();
         };
-        NativeRendererContext.prototype.setGlobalColorTransform = function (colorTransformMatrix) {
+        __egretProto__.setGlobalColorTransform = function (colorTransformMatrix) {
             if (colorTransformMatrix) {
                 egret_native.Graphics.setGlobalColorTransformEnabled(true);
                 egret_native.Graphics.setGlobalColorTransform(colorTransformMatrix);
@@ -190,10 +236,8 @@ var egret;
                 egret_native.Graphics.setGlobalColorTransformEnabled(false);
             }
         };
-        NativeRendererContext.prototype.initBlendMode = function () {
-            this.blendModes = {};
-            this.blendModes[egret.BlendMode.NORMAL] = [1, 771];
-            this.blendModes[egret.BlendMode.ADD] = [770, 1];
+        __egretProto__.setGlobalFilter = function (filterData) {
+            egret_native.Graphics.setGlobalShader(filterData);
         };
         return NativeRendererContext;
     })(egret.RendererContext);
@@ -222,6 +266,7 @@ var egret_native_graphics;
             egret_native.Graphics.lineTo(x, y + height);
             egret_native.Graphics.lineTo(x, y);
         }, this, arguments));
+        this.checkRect(x, y, width, height);
     }
     egret_native_graphics.drawRect = drawRect;
     function drawCircle(x, y, r) {
@@ -237,6 +282,10 @@ var egret_native_graphics;
         this.commandQueue.push(new Command(function (x, y) {
             egret_native.Graphics.lineTo(x, y);
         }, this, arguments));
+        this.checkPoint(this.lineX, this.lineY);
+        this.lineX = x;
+        this.lineY = y;
+        this.checkPoint(x, y);
     }
     egret_native_graphics.lineTo = lineTo;
     function curveTo(controlX, controlY, anchorX, anchorY) {
@@ -250,7 +299,14 @@ var egret_native_graphics;
     egret_native_graphics.moveTo = moveTo;
     function clear() {
         this.commandQueue.splice(0, this.commandQueue.length);
+        this.lineX = 0;
+        this.lineY = 0;
         egret_native.Graphics.lineStyle(0, 0);
+        this._minX = 0;
+        this._minY = 0;
+        this._maxX = 0;
+        this._maxY = 0;
+        this._firstCheck = true;
     }
     egret_native_graphics.clear = clear;
     function endFill() {

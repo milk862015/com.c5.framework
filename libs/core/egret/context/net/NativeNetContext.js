@@ -24,29 +24,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
+    /**
+     * @private
+     */
     var NativeNetContext = (function (_super) {
         __extends(NativeNetContext, _super);
         function NativeNetContext() {
             _super.call(this);
             this.urlData = {};
-            /**
-             * 本地版本信息文件存储路径
-             */
-            this.localVersionDataPath = "localVersion.manifest";
+            this.initVersion(new egret.VersionController());
         }
+        var __egretProto__ = NativeNetContext.prototype;
+        __egretProto__.initVersion = function (versionCtr) {
+            this._versionCtr = versionCtr;
+        };
         /**
          * @method egret.HTML5NetContext#proceed
          * @param loader {URLLoader}
          */
-        NativeNetContext.prototype.proceed = function (loader) {
+        __egretProto__.proceed = function (loader) {
             if (loader.dataFormat == egret.URLLoaderDataFormat.TEXTURE) {
                 this.loadTexture(loader);
                 return;
@@ -55,16 +53,25 @@ var egret;
                 this.loadSound(loader);
                 return;
             }
+            var self = this;
             var request = loader._request;
             var url = egret.NetContext._getUrl(request);
             if (url.indexOf("http://") == 0) {
                 this.urlData.type = request.method;
-                if (request.method == egret.URLRequestMethod.POST && request.data && request.data instanceof egret.URLVariables) {
+                //写入POST数据
+                if (request.method == egret.URLRequestMethod.POST && request.data) {
                     var urlVars = request.data;
                     this.urlData.data = urlVars.toString();
                 }
                 else {
                     delete this.urlData["data"];
+                }
+                //写入header信息
+                if (request.requestHeaders) {
+                    this.urlData.header = this.getHeaderString(request);
+                }
+                else {
+                    delete this.urlData.header;
                 }
                 var promise = egret.PromiseObject.create();
                 promise.onSuccessFunc = function (getted_str) {
@@ -72,7 +79,7 @@ var egret;
                     egret.callLater(egret.Event.dispatchEvent, egret.Event, loader, egret.Event.COMPLETE);
                 };
                 promise.onErrorFunc = function (error_code) {
-                    console.log("net error:" + error_code);
+                    egret.Logger.infoWithErrorId(1019, error_code);
                     egret.IOErrorEvent.dispatchIOErrorEvent(loader);
                 };
                 egret_native.requireHttp(url, this.urlData, promise);
@@ -80,11 +87,27 @@ var egret;
             else if (!egret_native.isFileExists(url)) {
                 download();
             }
-            else if (this.currentVersionData && !this.checkIsNewVersion(url)) {
+            else if (!this.checkIsNewVersion(url)) {
                 download();
             }
             else {
-                egret.__callAsync(onLoadComplete, this);
+                if (NativeNetContext.__use_asyn) {
+                    //异步读取
+                    readFileAsync();
+                }
+                else {
+                    //同步读取
+                    egret.__callAsync(onLoadComplete, this);
+                }
+            }
+            function readFileAsync() {
+                var promise = new egret.PromiseObject();
+                promise.onSuccessFunc = function (content) {
+                    self.saveVersion(url);
+                    loader.data = content;
+                    egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
+                };
+                egret_native.readFileAsync(url, promise);
             }
             function download() {
                 var promise = egret.PromiseObject.create();
@@ -95,43 +118,22 @@ var egret;
                 egret_native.download(url, url, promise);
             }
             function onLoadComplete() {
+                self.saveVersion(url);
                 var content = egret_native.readFileSync(url);
                 loader.data = content;
                 egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
             }
         };
-        NativeNetContext.prototype.loadSound = function (loader) {
-            var request = loader._request;
-            var url = request.url;
-            if (url.indexOf("http://") != -1) {
-                download();
+        __egretProto__.getHeaderString = function (request) {
+            var headerObj = {};
+            var length = request.requestHeaders.length;
+            for (var i = 0; i < length; i++) {
+                var urlRequestHeader = request.requestHeaders[i];
+                headerObj[urlRequestHeader.name] = urlRequestHeader.value;
             }
-            else if (!egret_native.isFileExists(url)) {
-                download();
-            }
-            else if (this.currentVersionData && !this.checkIsNewVersion(url)) {
-                download();
-            }
-            else {
-                egret.__callAsync(onLoadComplete, this);
-            }
-            function download() {
-                //                console.log("download:" + url);
-                var promise = egret.PromiseObject.create();
-                promise.onSuccessFunc = onLoadComplete;
-                promise.onErrorFunc = function () {
-                    egret.IOErrorEvent.dispatchIOErrorEvent(loader);
-                };
-                egret_native.download(url, url, promise);
-            }
-            function onLoadComplete() {
-                var sound = new egret.Sound();
-                sound.path = url;
-                loader.data = sound;
-                egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
-            }
+            return JSON.stringify(headerObj);
         };
-        NativeNetContext.prototype.loadTexture = function (loader) {
+        __egretProto__.loadSound = function (loader) {
             var self = this;
             var request = loader._request;
             var url = request.url;
@@ -141,7 +143,7 @@ var egret;
             else if (!egret_native.isFileExists(url)) {
                 download();
             }
-            else if (this.currentVersionData && !this.checkIsNewVersion(url)) {
+            else if (!this.checkIsNewVersion(url)) {
                 download();
             }
             else {
@@ -157,49 +159,92 @@ var egret;
             }
             function onLoadComplete() {
                 self.saveVersion(url);
-                var bitmapData = egret_native.Texture.addTexture(url);
+                var sound = new egret.Sound();
+                sound.path = url;
+                loader.data = sound;
+                egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
+            }
+        };
+        __egretProto__.loadTexture = function (loader) {
+            var self = this;
+            var request = loader._request;
+            var url = request.url;
+            if (url.indexOf("http://") != -1) {
+                download();
+            }
+            else if (!egret_native.isFileExists(url)) {
+                download();
+            }
+            else if (!this.checkIsNewVersion(url)) {
+                download();
+            }
+            else {
+                if (NativeNetContext.__use_asyn) {
+                    addTextureAsync();
+                }
+                else {
+                    egret.__callAsync(onLoadComplete, this);
+                }
+            }
+            function addTexture(bitmapData) {
+                self.saveVersion(url);
                 var texture = new egret.Texture();
                 texture._setBitmapData(bitmapData);
                 loader.data = texture;
                 egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
             }
+            function addTextureAsync() {
+                var promise = new egret.PromiseObject();
+                promise.onSuccessFunc = function (bitmapData) {
+                    addTexture(bitmapData);
+                };
+                promise.onErrorFunc = function () {
+                    egret.IOErrorEvent.dispatchIOErrorEvent(loader);
+                };
+                egret_native.Texture.addTextureAsyn(url, promise);
+            }
+            function download() {
+                var promise = egret.PromiseObject.create();
+                promise.onSuccessFunc = onLoadComplete;
+                promise.onErrorFunc = function () {
+                    egret.IOErrorEvent.dispatchIOErrorEvent(loader);
+                };
+                egret_native.download(url, url, promise);
+            }
+            function onLoadComplete() {
+                if (NativeNetContext.__use_asyn) {
+                    addTextureAsync();
+                }
+                else {
+                    var bitmapData = egret_native.Texture.addTexture(url);
+                    addTexture(bitmapData);
+                }
+            }
         };
         /**
          * 检查文件是否是最新版本
          */
-        NativeNetContext.prototype.checkIsNewVersion = function (url) {
-            //            console.log("check:" + url);
-            //            console.log(this.currentVersionData[url]);
-            //            console.log(this.baseVersionData[url]);
-            //            console.log(this.localVersionData[url]);
-            if (typeof this.currentVersionData[url] != "undefined") {
-                if (this.currentVersionData[url] == this.localVersionData[url]) {
-                    return true;
-                }
+        __egretProto__.checkIsNewVersion = function (url) {
+            if (this._versionCtr) {
+                return this._versionCtr.checkIsNewVersion(url);
             }
-            else if ((typeof this.baseVersionData[url] != "undefined") && this.baseVersionData[url] == this.localVersionData[url]) {
-                return true;
-            }
-            return false;
+            return true;
         };
         /**
          * 保存本地版本信息文件
          */
-        NativeNetContext.prototype.saveVersion = function (url) {
-            var change = false;
-            if (this.currentVersionData && this.currentVersionData[url]) {
-                this.localVersionData[url] = this.currentVersionData[url];
-                change = true;
-            }
-            else if (this.baseVersionData && this.baseVersionData) {
-                this.localVersionData[url] = this.baseVersionData[url];
-                change = true;
-            }
-            if (change) {
-                //                console.log("save:" + url);
-                egret_native.saveRecord(this.localVersionDataPath, JSON.stringify(this.localVersionData));
+        __egretProto__.saveVersion = function (url) {
+            if (this._versionCtr) {
+                this._versionCtr.saveVersion(url);
             }
         };
+        __egretProto__.getChangeList = function () {
+            if (this._versionCtr) {
+                return this._versionCtr.getChangeList();
+            }
+            return [];
+        };
+        NativeNetContext.__use_asyn = false;
         return NativeNetContext;
     })(egret.NetContext);
     egret.NativeNetContext = NativeNetContext;

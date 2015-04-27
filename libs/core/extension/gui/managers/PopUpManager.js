@@ -43,6 +43,7 @@ var egret;
              */
             function PopUpManager() {
             }
+            var __egretProto__ = PopUpManager.prototype;
             /**
              * 获取单例
              */
@@ -57,7 +58,7 @@ var egret;
                 }
                 return PopUpManager._impl;
             };
-            Object.defineProperty(PopUpManager.prototype, "modalColor", {
+            Object.defineProperty(PopUpManager, "modalColor", {
                 /**
                  * 模态遮罩的填充颜色
                  * @member egret.gui.PopUpManager#modalColor
@@ -71,7 +72,7 @@ var egret;
                 enumerable: true,
                 configurable: true
             });
-            Object.defineProperty(PopUpManager.prototype, "modalAlpha", {
+            Object.defineProperty(PopUpManager, "modalAlpha", {
                 /**
                  * 模态遮罩的透明度
                  * @member egret.gui.PopUpManager#modalAlpha
@@ -138,7 +139,6 @@ var egret;
             /**
              * 添加事件监听,参考PopUpEvent定义的常量。
              * @method egret.gui.PopUpManager.addEventListener
-             * @see org.flexlite.domUI.events.PopUpEvent
              * @param type {string}
              * @param listener {Function}
              * @param thisObject {any}
@@ -148,12 +148,11 @@ var egret;
             PopUpManager.addEventListener = function (type, listener, thisObject, useCapture, priority) {
                 if (useCapture === void 0) { useCapture = false; }
                 if (priority === void 0) { priority = 0; }
-                PopUpManager.getImpl().addEventListener(type, listener, this, useCapture, priority);
+                PopUpManager.getImpl().addEventListener(type, listener, thisObject, useCapture, priority);
             };
             /**
              * 移除事件监听,参考PopUpEvent定义的常量。
              * @method egret.gui.PopUpManager.removeEventListener
-             * @see org.flexlite.domUI.events.PopUpEvent
              * @param type {string}
              * @param listener {Function}
              * @param thisObject {any}

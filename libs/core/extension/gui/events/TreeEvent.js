@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -58,10 +52,31 @@ var egret;
                 if (item === void 0) { item = null; }
                 if (itemRenderer === void 0) { itemRenderer = null; }
                 _super.call(this, type, bubbles, cancelable);
+                /**
+                 * 触发鼠标事件的项呈示器数据源项。
+                 * @member egret.gui.TreeEvent#item
+                 */
+                this.item = null;
+                /**
+                 * 触发鼠标事件的项呈示器。
+                 * @member egret.gui.TreeEvent#itemRenderer
+                 */
+                this.itemRenderer = null;
+                /**
+                 * 触发鼠标事件的项索引
+                 * @member egret.gui.TreeEvent#itemIndex
+                 */
+                this.itemIndex = NaN;
+                /**
+                 * 当事件类型为ITEM_OPENING时，true表示即将打开节点，反之关闭。
+                 * @member egret.gui.TreeEvent#opening
+                 */
+                this.opening = false;
                 this.item = item;
                 this.itemRenderer = itemRenderer;
                 this.itemIndex = itemIndex;
             }
+            var __egretProto__ = TreeEvent.prototype;
             /**
              * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
              * @method egret.gui.TreeEvent.dispatchTreeEvent

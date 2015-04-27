@@ -24,18 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     /**
      * @class egret.NativeDeviceContext
      * @classdesc
      * @extends egret.HashObject
+     * @private
      */
     var NativeDeviceContext = (function (_super) {
         __extends(NativeDeviceContext, _super);
@@ -44,19 +39,22 @@ var egret;
          */
         function NativeDeviceContext() {
             _super.call(this);
+            this.callback = null;
+            this.thisObject = null;
             egret.TextField.default_fontFamily = "/system/fonts/DroidSansFallback.ttf";
         }
+        var __egretProto__ = NativeDeviceContext.prototype;
         /**
          * @method egret.NativeDeviceContext#executeMainLoop
          * @param callback {Function}
          * @param thisObject {any}
          */
-        NativeDeviceContext.prototype.executeMainLoop = function (callback, thisObject) {
+        __egretProto__.executeMainLoop = function (callback, thisObject) {
             this.callback = callback;
             this.thisObject = thisObject;
             egret_native.executeMainLoop(this.onEnterFrame, this);
         };
-        NativeDeviceContext.prototype.onEnterFrame = function (advancedTime) {
+        __egretProto__.onEnterFrame = function (advancedTime) {
             this.callback.call(this.thisObject, advancedTime);
         };
         return NativeDeviceContext;
@@ -87,7 +85,7 @@ var egret_native_external_interface;
             listener.call(null, value);
         }
         else {
-            egret.Logger.warning("ExternalInterface调用了js没有注册的方法:" + functionName);
+            egret.Logger.warningWithErrorId(1004, functionName);
         }
     }
     egret_native_external_interface.onReceivedPluginInfo = onReceivedPluginInfo;
@@ -169,7 +167,7 @@ var egret_native_localStorage;
             return true;
         }
         catch (e) {
-            console.log("egret_native_localStorage.setItem保存失败,key=" + key + "&value=" + value);
+            egret.Logger.infoWithErrorId(1018, key, value);
             return false;
         }
     }
@@ -187,19 +185,15 @@ var egret_native_localStorage;
     }
     egret_native_localStorage.clear = clear;
     function save() {
-        //        console.log("egret_native_localStorage::" + "WriteFile");
         egret_native.saveRecord(egret_native_localStorage.filePath, JSON.stringify(this.data));
     }
     egret_native_localStorage.save = save;
     function init() {
         if (egret_native.isRecordExists(egret_native_localStorage.filePath)) {
-            //            console.log("egret_native_localStorage::" + "文件存在");
             var str = egret_native.loadRecord(egret_native_localStorage.filePath);
-            //            console.log("egret_native_localStorage::" + str);
             this.data = JSON.parse(str);
         }
         else {
-            //            console.log("egret_native_localStorage::" + "文件不存在");
             this.data = {};
         }
         for (var key in egret_native_localStorage) {
@@ -213,12 +207,10 @@ egret.ContainerStrategy.prototype._setupContainer = function () {
 };
 egret.ContentStrategy.prototype._getClientWidth = function () {
     var result = egret_native.EGTView.getFrameWidth();
-    //    console.log("获取屏幕宽度：" + result);
     return result;
 };
 egret.ContentStrategy.prototype._getClientHeight = function () {
     var result = egret_native.EGTView.getFrameHeight();
-    //    console.log("获取屏幕高度：" + result);
     return result;
 };
 egret.ContentStrategy.prototype.setEgretSize = function (w, h, styleW, styleH, left, top) {
@@ -230,9 +222,37 @@ egret.ContentStrategy.prototype.setEgretSize = function (w, h, styleW, styleH, l
     egret_native.EGTView.setVisibleRect(left, top, styleW, styleH);
     egret_native.EGTView.setDesignSize(w, h);
 };
+egret.Logger.openLogByType = function (logType) {
+    egret_native.loglevel(logType);
+};
 egret_native.pauseApp = function () {
     egret.MainContext.instance.stage.dispatchEvent(new egret.Event(egret.Event.DEACTIVATE));
 };
 egret_native.resumeApp = function () {
     egret.MainContext.instance.stage.dispatchEvent(new egret.Event(egret.Event.ACTIVATE));
+};
+egret.RenderTexture.prototype.init = function () {
+};
+egret.RenderTexture.prototype.setSize = function (width, height) {
+    //todo 复用
+    this.dispose();
+    this._bitmapData = new egret_native.RenderTexture(width, height);
+    this.renderContext = new egret.NativeRendererContext();
+};
+egret.RenderTexture.prototype.begin = function () {
+    this._bitmapData.begin();
+};
+egret.RenderTexture.prototype.end = function () {
+    this._bitmapData.end();
+};
+egret.RenderTexture.prototype.dispose = function () {
+    if (this._bitmapData) {
+        this._bitmapData.dispose();
+        this.renderContext = null;
+        this._bitmapData = null;
+    }
+};
+egret.getOption = function (key) {
+    console.log("egret_native.getOption");
+    return egret_native.getOption(key);
 };

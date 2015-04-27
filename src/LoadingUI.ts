@@ -49,7 +49,6 @@ class LoadingUI extends egret.Sprite{
 
         this._baseW = this._bg.width;
 
-
         this._sp = new egret.Bitmap();
         this.addChild(this._sp);
         this._sp.texture = RES.getRes('loading.green_png');

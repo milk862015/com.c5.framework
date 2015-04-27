@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -62,12 +56,28 @@ var egret;
                 if (items === void 0) { items = null; }
                 if (oldItems === void 0) { oldItems = null; }
                 _super.call(this, type, bubbles, cancelable);
+                /**
+                 * 指示发生的事件类型。此属性值可以是 CollectionEventKind 类中的一个值，也可以是 null，用于指示类型未知。
+                 * @member egret.gui.CollectionEvent#kind
+                 */
+                this.kind = null;
+                /**
+                 * 受事件影响的项目的列表
+                 * @member egret.gui.CollectionEvent#items
+                 */
+                this.items = null;
+                /**
+                 * 仅当kind的值为CollectionEventKind.REPLACE时，表示替换前的项目列表
+                 * @member egret.gui.CollectionEvent#oldItems
+                 */
+                this.oldItems = null;
                 this.kind = kind;
                 this.location = location;
                 this.oldLocation = oldLocation;
                 this.items = items ? items : [];
                 this.oldItems = oldItems ? oldItems : [];
             }
+            var __egretProto__ = CollectionEvent.prototype;
             /**
              * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
              * @method egret.gui.CollectionEvent.dispatchCollectionEvent

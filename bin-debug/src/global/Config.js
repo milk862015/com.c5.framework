@@ -1,6 +1,7 @@
 var Config = (function () {
     function Config() {
     }
+    var __egretProto__ = Config.prototype;
     Config.STAGE_WIDTH = 640;
     Config.STAGE_HEIGHT = 1008;
     Config.FIGHT_WIDTH = 110; //战斗格子宽

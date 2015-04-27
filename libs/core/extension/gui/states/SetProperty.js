@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -48,15 +42,35 @@ var egret;
              */
             function SetProperty(target, name, value) {
                 _super.call(this);
+                /**
+                 * 要修改的属性名
+                 * @member egret.gui.SetProperty#name
+                 */
+                this.name = null;
+                /**
+                 * 目标实例名
+                 * @member egret.gui.SetProperty#target
+                 */
+                this.target = null;
+                /**
+                 * 属性值
+                 * @member egret.gui.SetProperty#value
+                 */
+                this.value = null;
+                /**
+                 * 旧的属性值
+                 */
+                this.oldValue = null;
                 this.target = target;
                 this.name = name;
                 this.value = value;
             }
+            var __egretProto__ = SetProperty.prototype;
             /**
              * @method egret.gui.SetProperty#apply
              * @param parent {IContainer}
              */
-            SetProperty.prototype.apply = function (parent) {
+            __egretProto__.apply = function (parent) {
                 var obj = this.target == null || this.target == "" ? parent : parent[this.target];
                 if (obj == null)
                     return;
@@ -67,7 +81,7 @@ var egret;
              * @method egret.gui.SetProperty#remove
              * @param parent {IContainer}
              */
-            SetProperty.prototype.remove = function (parent) {
+            __egretProto__.remove = function (parent) {
                 var obj = this.target == null || this.target == "" ? parent : parent[this.target];
                 if (obj == null)
                     return;
@@ -77,9 +91,11 @@ var egret;
             /**
              * 设置属性值
              */
-            SetProperty.prototype.setPropertyValue = function (obj, name, value, valueForType) {
+            __egretProto__.setPropertyValue = function (obj, name, value, valueForType) {
                 if (value === undefined || value === null)
                     obj[name] = value;
+                else if (typeof (valueForType) == "number")
+                    obj[name] = parseFloat(value);
                 else if (typeof (valueForType) == "boolean")
                     obj[name] = this.toBoolean(value);
                 else
@@ -88,7 +104,7 @@ var egret;
             /**
              * 转成Boolean值
              */
-            SetProperty.prototype.toBoolean = function (value) {
+            __egretProto__.toBoolean = function (value) {
                 if (typeof (value) == "string")
                     return value.toLowerCase() == "true";
                 return value != false;

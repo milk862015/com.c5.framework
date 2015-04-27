@@ -24,12 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
     var gui;
@@ -63,12 +57,38 @@ var egret;
                 if (newValue === void 0) { newValue = null; }
                 if (source === void 0) { source = null; }
                 _super.call(this, type, bubbles, cancelable);
+                /**
+                 * 指定更改的类型。可能的值为 PropertyChangeEventKind.UPDATE、PropertyChangeEventKind.DELETE 和 null。
+                 * @member egret.gui.PropertyChangeEvent#kind
+                 */
+                this.kind = null;
+                /**
+                 * 更改后的属性的值。
+                 * @member egret.gui.PropertyChangeEvent#newValue
+                 */
+                this.newValue = null;
+                /**
+                 * 更改后的属性的值。
+                 * @member egret.gui.PropertyChangeEvent#oldValue
+                 */
+                this.oldValue = null;
+                /**
+                 * 指定已更改属性的 String、QName 或 int。
+                 * @member egret.gui.PropertyChangeEvent#property
+                 */
+                this.property = null;
+                /**
+                 * 发生更改的对象。
+                 * @member egret.gui.PropertyChangeEvent#source
+                 */
+                this.source = null;
                 this.kind = kind;
                 this.property = property;
                 this.oldValue = oldValue;
                 this.newValue = newValue;
                 this.source = source;
             }
+            var __egretProto__ = PropertyChangeEvent.prototype;
             /**
              * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
              * @method egret.gui.PropertyChangeEvent.dispatchPropertyChangeEvent

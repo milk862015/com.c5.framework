@@ -1,4 +1,5 @@
 class GameEvent extends egret.Event{
+	public static LAUNCH:string = "game_event_launch";//游戏launch
 	public static START:string = "game_event_start"; //游戏开始
 	public static TIME_START:string= "game_event_time_start"; //开始计时
 	public static TIME_PAUSE:string = "game_event_time_pause"; //暂停计时
