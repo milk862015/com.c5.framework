@@ -2,283 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba0bbd02-7a6d-4a08-a4d1-63000dff8621" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\Bomb.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\FightCircle.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\FightLine.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\FightMonster.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\MonsterObject.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\MonsterPanel.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\element\SharePanel.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\scene\FightScene.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\ui\FightSkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\ui\LoginSkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\ui\LotterySkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\component\ui\ResultSkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\global\GameData.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\guide\GuideMovie.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\js\WeixinApi.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\manage\EffectManage.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\manage\FightManage.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\manage\UIManage.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\port\dataPort.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\skins\ui\FightSkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\skins\ui\LoginSkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\skins\ui\LotterySkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\skins\ui\ResultSkin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\tools\GameObject.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\bin-debug\src\tools\ObjectPool.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\libs\core\egret\context\NativeContext.d.ts" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\libs\core\egret\context\renderer\dom\DOMTrans.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\libs\core\egret\display\Scroller.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\libs\core\egret\text\BitmapTextSpriteSheet.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\libs\core\egret\text\TextInput.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\github\com.c5.framework\libs\core\extension\gui\components\supportClasses\Animation.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/states/AddItems.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/states/AddItems.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Alert.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Alert.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/AlertSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/AlertSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/AnalyzerBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/AnalyzerBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/collections/ArrayCollection.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/collections/ArrayCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/AssetAdapter.js" afterPath="$PROJECT_DIR$/bin-debug/src/AssetAdapter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/BasicLayout.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/BasicLayout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/BinAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/BinAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/Bitmap.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/Bitmap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/BitmapFillMode.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/BitmapFillMode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/text/BitmapText.js" afterPath="$PROJECT_DIR$/libs/core/egret/text/BitmapText.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/BlendMode.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/BlendMode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/Browser.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/Browser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Button.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Button.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ButtonBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ButtonBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/ButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/ButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/ButtonSkin.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/ButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/ByteArray.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/ByteArray.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/CheckBox.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/CheckBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/CheckBoxSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/CheckBoxSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/ClassFactory.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/ClassFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/CloseButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/CloseButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/CloseEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/CloseEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/CollectionEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/CollectionEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/CollectionEventKind.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/CollectionEventKind.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/ColumnAlign.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/ColumnAlign.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/global/Config.js" afterPath="$PROJECT_DIR$/bin-debug/src/global/Config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/global/Core.js" afterPath="$PROJECT_DIR$/bin-debug/src/global/Core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/DataGroup.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/DataGroup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DefaultAssetAdapter.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DefaultAssetAdapter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DefaultSkinAdapter.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DefaultSkinAdapter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/managers/layoutClass/DepthQueue.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/managers/layoutClass/DepthQueue.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/devices/DeviceContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/devices/DeviceContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/DisplayObject.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/DisplayObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/DisplayObjectContainer.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/DisplayObjectContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DropDownController.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DropDownController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/DropDownList.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/DropDownList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DropDownListBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/DropDownListBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/DropDownListItemRendererSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/DropDownListItemRendererSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/DropDownListOpenButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/DropDownListOpenButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/DropDownListSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/DropDownListSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/tween/Ease.js" afterPath="$PROJECT_DIR$/libs/core/egret/tween/Ease.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/EditableText.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/EditableText.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/ElementExistenceEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/ElementExistenceEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/Event.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/Event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/EventDispatcher.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/EventDispatcher.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/EventPhase.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/EventPhase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/external/ExternalInterface.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/external/ExternalInterface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/config/FightConfig.js" afterPath="$PROJECT_DIR$/bin-debug/src/config/FightConfig.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/skins/ui/FightSkin.exml" afterPath="$PROJECT_DIR$/src/skins/ui/FightSkin.exml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/FontAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/FontAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/event/GameEvent.js" afterPath="$PROJECT_DIR$/bin-debug/src/event/GameEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/event/GameEvent.ts" afterPath="$PROJECT_DIR$/src/event/GameEvent.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/manage/GameManage.js" afterPath="$PROJECT_DIR$/bin-debug/src/manage/GameManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/response/GameResponse.js" afterPath="$PROJECT_DIR$/bin-debug/src/response/GameResponse.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/response/GameResponse.ts" afterPath="$PROJECT_DIR$/src/response/GameResponse.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/Graphics.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/Graphics.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Group.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Group.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/GroupBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/GroupBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/HScrollBar.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/HScrollBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/HSlider.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/HSlider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/HSliderSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/HSliderSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/HSliderThumbSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/HSliderThumbSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/HTML5CanvasRenderer.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/HTML5CanvasRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/devices/HTML5DeviceContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/devices/HTML5DeviceContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/net/HTML5NetContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/net/HTML5NetContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/display/HTML5StageText.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/display/HTML5StageText.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/interactive/HTML5TouchContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/interactive/HTML5TouchContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/HTTPStatusEvent.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/HTTPStatusEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/HashObject.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/HashObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/layout/HorizontalAlign.js" afterPath="$PROJECT_DIR$/libs/core/egret/layout/HorizontalAlign.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/HorizontalLayout.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/HorizontalLayout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/text/HtmlTextParser.js" afterPath="$PROJECT_DIR$/libs/core/egret/text/HtmlTextParser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/IOErrorEvent.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/IOErrorEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/ImageAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/ImageAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/IndexChangeEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/IndexChangeEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/Injector.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/Injector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/text/InputController.js" afterPath="$PROJECT_DIR$/libs/core/egret/text/InputController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/interactive/InteractionMode.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/interactive/InteractionMode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ItemRenderer.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ItemRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/ItemRendererSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/ItemRendererSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/JsonAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/JsonAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Label.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Label.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/supportClasses/LayoutBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/supportClasses/LayoutBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/managers/LayoutManager.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/managers/LayoutManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/utils/LayoutUtil.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/utils/LayoutUtil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/List.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/List.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ListBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ListBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/ListEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/ListEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/ListSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/ListSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/LoadingUI.js" afterPath="$PROJECT_DIR$/bin-debug/src/LoadingUI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LoadingUI.ts" afterPath="$PROJECT_DIR$/src/LoadingUI.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/Logger.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/Logger.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/skins/ui/LoginSkin.exml" afterPath="$PROJECT_DIR$/src/skins/ui/LoginSkin.exml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/Main.js" afterPath="$PROJECT_DIR$/bin-debug/src/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.ts" afterPath="$PROJECT_DIR$/src/Main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/MainContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/MainContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/geom/Matrix.js" afterPath="$PROJECT_DIR$/libs/core/egret/geom/Matrix.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/MoveEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/MoveEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/MovieClip.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/MovieClip.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/devices/NativeDeviceContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/devices/NativeDeviceContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/net/NativeNetContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/net/NativeNetContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/NativeRendererContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/NativeRendererContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/display/NativeStageText.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/display/NativeStageText.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/interactive/NativeTouchContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/interactive/NativeTouchContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/NavigationUnit.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/NavigationUnit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/net/NetContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/net/NetContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/jslib/NumberUtils.js" afterPath="$PROJECT_DIR$/libs/core/jslib/NumberUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/collections/ObjectCollection.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/collections/ObjectCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/states/OverrideBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/states/OverrideBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Panel.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Panel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/PanelSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/PanelSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/geom/Point.js" afterPath="$PROJECT_DIR$/libs/core/egret/geom/Point.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/PopUpAnchor.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/PopUpAnchor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/PopUpEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/PopUpEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/managers/PopUpManager.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/managers/PopUpManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/managers/impl/PopUpManagerImpl.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/managers/impl/PopUpManagerImpl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/PopUpPosition.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/PopUpPosition.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/Profiler.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/Profiler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/ProgressBar.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/ProgressBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/ProgressBarDirection.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/ProgressBarDirection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/ProgressBarSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/ProgressBarSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/ProgressEvent.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/ProgressEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/PromiseObject.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/PromiseObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/PropertyChangeEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/PropertyChangeEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/PropertyChangeEventKind.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/PropertyChangeEventKind.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/RadioButton.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/RadioButton.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/RadioButtonGroup.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/RadioButtonGroup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/RadioButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/RadioButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/Range.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/Range.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Rect.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Rect.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/geom/Rectangle.js" afterPath="$PROJECT_DIR$/libs/core/egret/geom/Rectangle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/Recycler.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/Recycler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/RenderFilter.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/RenderFilter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/RenderTexture.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/RenderTexture.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/RendererContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/RendererContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/RendererExistenceEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/RendererExistenceEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/ResizeEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/ResizeEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/Resource.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/Resource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/core/ResourceConfig.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/core/ResourceConfig.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/events/ResourceEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/events/ResourceEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/core/ResourceItem.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/core/ResourceItem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/core/ResourceLoader.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/core/ResourceLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/skins/ui/ResultSkin.exml" afterPath="$PROJECT_DIR$/src/skins/ui/ResultSkin.exml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/RowAlign.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/RowAlign.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/SAXParser.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/SAXParser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/ScrollPolicy.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/ScrollPolicy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/ScrollView.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/ScrollView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Scroller.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Scroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/states/SetProperty.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/states/SetProperty.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/Shape.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/Shape.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/SheetAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/SheetAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Skin.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Skin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/SkinBasicLayout.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/SkinBasicLayout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/SkinPartEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/SkinPartEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/SkinnableComponent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/SkinnableComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/SkinnableContainer.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/SkinnableContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/SkinnableContainerSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/SkinnableContainerSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/SkinnableDataContainer.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/SkinnableDataContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/SkinnableTextBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/SkinnableTextBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/SliderBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/SliderBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/media/Sound.js" afterPath="$PROJECT_DIR$/libs/core/egret/media/Sound.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/SoundAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/SoundAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Spacer.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Spacer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/Sprite.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/Sprite.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/SpriteSheet.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/SpriteSheet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/Stage.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/Stage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/StageDelegate.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/StageDelegate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/StageScaleMode.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/StageScaleMode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/display/StageText.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/display/StageText.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/states/State.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/states/State.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/StateChangeEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/StateChangeEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/TabBar.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/TabBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/TabBarButton.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/TabBarButton.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/TabBarButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/TabBarButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/TabBarSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/TabBarSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/TextAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/TextAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/TextArea.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/TextArea.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/TextBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/TextBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/text/TextField.js" afterPath="$PROJECT_DIR$/libs/core/egret/text/TextField.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/text/TextFieldType.js" afterPath="$PROJECT_DIR$/libs/core/egret/text/TextFieldType.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/TextInput.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/TextInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/display/Texture.js" afterPath="$PROJECT_DIR$/libs/core/egret/display/Texture.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/Theme.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/Theme.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/Ticker.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/Ticker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/TileLayout.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/TileLayout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/TileOrientation.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/TileOrientation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/Timer.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/Timer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/TimerEvent.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/TimerEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/TitleWindow.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/TitleWindow.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/TitleWindowSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/TitleWindowSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/ToggleButton.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/ToggleButton.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ToggleButtonBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/ToggleButtonBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/ToggleButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/ToggleButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/ToggleSwitch.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/ToggleSwitch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/ToggleSwitchSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/ToggleSwitchSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/interactive/TouchContext.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/interactive/TouchContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/events/TouchEvent.js" afterPath="$PROJECT_DIR$/libs/core/egret/events/TouchEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/TrackBase.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/TrackBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/TrackBaseEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/TrackBaseEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/Tree.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/Tree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/TreeDisclosureButtonSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/TreeDisclosureButtonSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/TreeEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/TreeEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/TreeItemRenderer.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/supportClasses/TreeItemRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/TreeItemRendererSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/TreeItemRendererSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/TreeSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/TreeSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/tween/Tween.js" afterPath="$PROJECT_DIR$/libs/core/egret/tween/Tween.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/UIAsset.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/UIAsset.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/UIComponent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/UIComponent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/events/UIEvent.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/events/UIEvent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/UIGlobals.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/UIGlobals.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/UILayer.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/UILayer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/core/UIStage.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/core/UIStage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/net/URLLoader.js" afterPath="$PROJECT_DIR$/libs/core/egret/net/URLLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/net/URLLoaderDataFormat.js" afterPath="$PROJECT_DIR$/libs/core/egret/net/URLLoaderDataFormat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/net/URLRequest.js" afterPath="$PROJECT_DIR$/libs/core/egret/net/URLRequest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/net/URLRequestMethod.js" afterPath="$PROJECT_DIR$/libs/core/egret/net/URLRequestMethod.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/net/URLVariables.js" afterPath="$PROJECT_DIR$/libs/core/egret/net/URLVariables.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/VScrollBar.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/VScrollBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/VSlider.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/VSlider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/VSliderSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/VSliderSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/skins/simple/VSliderThumbSkin.js" afterPath="$PROJECT_DIR$/bin-debug/src/skins/simple/VSliderThumbSkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/layout/VerticalAlign.js" afterPath="$PROJECT_DIR$/libs/core/egret/layout/VerticalAlign.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/layouts/VerticalLayout.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/layouts/VerticalLayout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/components/ViewStack.js" afterPath="$PROJECT_DIR$/libs/core/extension/gui/components/ViewStack.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/WebGLRenderer.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/WebGLRenderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/webgl/WebGLShaderManager.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/webgl/WebGLShaderManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/renderer/webgl/WebGLUtils.js" afterPath="$PROJECT_DIR$/libs/core/egret/context/renderer/webgl/WebGLUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/XML.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/XML.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/XMLAnalyzer.js" afterPath="$PROJECT_DIR$/libs/core/extension/resource/analyzer/XMLAnalyzer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/core.d.ts" afterPath="$PROJECT_DIR$/libs/core/core.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/egretProperties.json" afterPath="$PROJECT_DIR$/egretProperties.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/lib/egret_file_list.js" afterPath="$PROJECT_DIR$/bin-debug/lib/egret_file_list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/exml.d.ts" afterPath="$PROJECT_DIR$/libs/exml.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/game/game.d.ts" afterPath="$PROJECT_DIR$/libs/game/game.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/src/game_file_list.js" afterPath="$PROJECT_DIR$/bin-debug/src/game_file_list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/getQualifiedClassName.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/getQualifiedClassName.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/extension/gui/gui.d.ts" afterPath="$PROJECT_DIR$/libs/core/extension/gui/gui.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/hasDefinition.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/hasDefinition.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/html5.d.ts" afterPath="$PROJECT_DIR$/libs/core/egret/context/html5.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/context/native.d.ts" afterPath="$PROJECT_DIR$/libs/core/egret/context/native.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/launcher/native_require.js" afterPath="$PROJECT_DIR$/launcher/native_require.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/setTimeout.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/setTimeout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/theme.thm" afterPath="$PROJECT_DIR$/resource/theme.thm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/core/egret/utils/toColorString.js" afterPath="$PROJECT_DIR$/libs/core/egret/utils/toColorString.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wingProperties.json" afterPath="$PROJECT_DIR$/wingProperties.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/launcher/share.js" afterPath="$PROJECT_DIR$/launcher/share.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="com.c5.framework.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -302,11 +27,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36101082" vertical-offset="450" max-vertical-offset="4450">
+            <state vertical-scroll-proportion="-1.0" vertical-offset="625" max-vertical-offset="4450">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="share.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/launcher/share.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="1125">
+              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameResponse.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/response/GameResponse.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.49941245" vertical-offset="150" max-vertical-offset="1450">
+              <caret line="23" column="32" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -324,6 +69,7 @@
         <option value="$PROJECT_DIR$/src/event/GameEvent.ts" />
         <option value="$PROJECT_DIR$/src/LoadingUI.ts" />
         <option value="$PROJECT_DIR$/src/Main.ts" />
+        <option value="$PROJECT_DIR$/launcher/share.js" />
       </list>
     </option>
   </component>
@@ -404,7 +150,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3281768" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281768" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -452,14 +198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/response/GameResponse.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5608592" vertical-offset="105" max-vertical-offset="1450">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LoadingUI.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3951613" vertical-offset="382" max-vertical-offset="2450">
@@ -470,8 +208,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36101082" vertical-offset="450" max-vertical-offset="4450">
+        <state vertical-scroll-proportion="-1.0" vertical-offset="625" max-vertical-offset="4450">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/launcher/share.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="1125">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/response/GameResponse.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49941245" vertical-offset="150" max-vertical-offset="1450">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="32" />
           <folding />
         </state>
       </provider>

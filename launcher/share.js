@@ -29,9 +29,9 @@ SGame.check = function(){
 
 SGame.checkHost = function(){
     var host = location.host;
-    if( host.indexOf('aiwanpai.com') != -1 ){
+    if( host.indexOf('act.aiwanpai.com') != -1 ){
         var js = document.createElement('script');
-        js.src = 'http://www.aiwanpai.com/assets/js/game-handler.js';
+        js.src = 'http://act.aiwanpai.com/assets/js/game-handler.js';
         document.getElementsByTagName('head')[0].appendChild(js);
         SGame.check();
     }
